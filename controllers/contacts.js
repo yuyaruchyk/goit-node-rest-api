@@ -1,11 +1,10 @@
-const contacts = require("../models/contacts");
+const { Contact } = require("../models/contact");
 const { HttpError } = require("../utils");
-
 
 const ctrlWrapper = require("../utils/ctrl.Wrapper");
 
 const getContacts = async (req, res) => {
-  const result = await contacts.getContacts();
+  const result = await Contact.find();
   res.json(result);
 };
 
@@ -20,8 +19,7 @@ const getContactById = async (req, res) => {
 };
 
 const addContact = async (req, res) => {
-
-  const result = await contacts.addContact(req.body);
+  const result = await Contact.create(req.body);
   res.status(201).json(result);
 };
 
@@ -37,7 +35,6 @@ const removeContact = async (req, res) => {
 };
 
 const updateById = async (req, res) => {
-
   const { id } = req.params;
   const result = await contacts.updateById(id, req.body);
   if (!result) {
