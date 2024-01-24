@@ -18,6 +18,7 @@ router.put(
   validateBody(schemas.AddSchema),
   ctrl.updateById
 );
+
 router.patch(
   "/:contactId/favorite",
   isValidId,
