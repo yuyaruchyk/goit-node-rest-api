@@ -25,7 +25,7 @@ const contactSchema = new Schema({
 contactSchema.post("save", handleMongooseError);
 const Contact = model("contact", contactSchema);
 
-const AddSchema = Joi.object({
+const addSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
   phone: Joi.number().required(),
@@ -37,7 +37,7 @@ const updateFavoriteSchema = Joi.object({
 });
 
 const schemas = {
-  AddSchema,
+  addSchema,
   updateFavoriteSchema,
 };
 
