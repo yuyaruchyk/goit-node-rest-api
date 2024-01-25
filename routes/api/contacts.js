@@ -20,7 +20,7 @@ router.put(
 );
 
 router.patch(
-  "/:contactId/favorite",
+  "/:id/favorite",
   isValidId,
   validateBody(schemas.updateFavoriteSchema),
   ctrl.updateFavorite
