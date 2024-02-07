@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { validateBody, authenticate } = require("../../middlewares");
+const { validateBody, authenticate, upload } = require("../../middlewares");
 const { userSchemas } = require("../../models");
 const ctrl = require("../../controllers");
 
@@ -18,6 +18,11 @@ authRouter.post(
 );
 authRouter.get("/current", authenticate, ctrl.getCurrentUser);
 authRouter.post("/logout", authenticate, ctrl.logoutUser);
-
+authRouter.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  ctrl.updateAvatar
+);
 
 module.exports = authRouter;
