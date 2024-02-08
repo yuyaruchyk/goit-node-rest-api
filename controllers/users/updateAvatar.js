@@ -1,8 +1,8 @@
 const path = require("path");
 const fs = require("fs/promises");
+const { ctrlWrapper } = require("../../helpers/ctrlWrapper");
 
 const { User } = require("../../models/user");
-const { ctrlWrapper } = require("../../helpers");
 
 const avatarsDir = path.join(__dirname, "../", "../", "public", "avatars");
 
@@ -20,6 +20,4 @@ const updateAvatar = async (req, res) => {
   });
 };
 
-module.exports = {
-  updateAvatar: ctrlWrapper(updateAvatar),
-};
+module.exports = ctrlWrapper(updateAvatar);
