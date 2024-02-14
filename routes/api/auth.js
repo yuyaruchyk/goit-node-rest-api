@@ -11,6 +11,13 @@ authRouter.post(
   validateBody(userSchemas.registerSchema),
   ctrl.registerUser
 );
+authRouter.get("/verify/:verificationCode", ctrl.verifyEmail);
+
+authRouter.post(
+  "/verify",
+  validateBody(userSchemas.emailSchema),
+  ctrl.resendVerifyEmail
+);
 authRouter.post(
   "/login",
   validateBody(userSchemas.loginSchema),
