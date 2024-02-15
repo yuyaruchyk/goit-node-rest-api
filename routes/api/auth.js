@@ -11,7 +11,7 @@ authRouter.post(
   validateBody(userSchemas.registerSchema),
   ctrl.registerUser
 );
-
+authRouter.get("/verify/:verificationToken", ctrl.verifyEmail);
 authRouter.post(
   "/login",
   validateBody(userSchemas.loginSchema),
