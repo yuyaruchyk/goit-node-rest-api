@@ -10,7 +10,7 @@ const resendVerifyEmail = async (req, res) => {
   console.log(user);
 
   if (!user) {
-    throw HttpError(400, "Email not a found");
+    throw HttpError(400, "Email not found");
   }
 
   if (user.verify) {
@@ -21,7 +21,7 @@ const resendVerifyEmail = async (req, res) => {
     to: email,
     from: "yulia.yu@meta.ua",
     subject: "Verify Email!",
-    text: "Hello world?",
+    text: "Verify email",
     html: `<h1>Hello, kindly click on the link below to verify your account✔</h1>
     <a target="_blank" href="${BASE_URL}/users/verify/${user.verificationToken}">Click verify email</a>`,
   };

@@ -24,10 +24,14 @@ const registerUser = async (req, res) => {
     avatarURL,
     verificationToken,
   });
+
   const verifyEmail = {
     to: email,
-    subject: "Verify email",
-    html: `<a target="_blank" href="${BASE_URL}/users/verify/${verificationToken}">Click verify email</a>`,
+    from: "yulia.yu@meta.ua",
+    subject: "Verify Email!",
+    text: "Verify Email",
+    html: `<h1>Hello, kindly click on the link below to verify your account✔</h1>
+    <a target="_blank" href="${BASE_URL}/users/verify/${verificationToken}">Click verify email</a>`,
   };
 
   await sendEmail(verifyEmail);
