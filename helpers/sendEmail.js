@@ -14,18 +14,13 @@ const nodemailerConfig = {
   },
 };
 
-const transport = nodemailer.createTransport(nodemailerConfig);
+const transporter = nodemailer.createTransport(nodemailerConfig);
 
-const email = {
-  to: "kinedav149@huvacliq.com",
-  from: "yulia.yu@meta.ua",
-  subject: "Test email",
-  html: "<p><strong>Test email</strong> from localhost:3000</p>",
+const sendEmail = async (emailOptions) => {
+  transporter
+    .sendMail(emailOptions)
+
+    .catch((err) => console.log(err.message));
 };
 
-transport
-  .sendMail(email)
-  .then(() => console.log("Email send success"))
-  .catch((error) => console.log(error.message));
-
-module.exports = email;
+module.exports = sendEmail;

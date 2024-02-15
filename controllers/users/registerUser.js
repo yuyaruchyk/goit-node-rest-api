@@ -3,6 +3,7 @@ const gravatar = require("gravatar");
 const { nanoid } = require("nanoid");
 const { User } = require("../../models");
 const { sendEmail } = require("../../helpers");
+
 const { BASE_URL } = process.env;
 
 const registerUser = async (req, res) => {
