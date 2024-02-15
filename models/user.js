@@ -55,6 +55,12 @@ const loginSchema = Joi.object({
   password: Joi.string().min(6).required(),
 });
 
+const verifyEmailSchema = Joi.object({
+  email: Joi.string()
+    .pattern(emailRegex)
+    .required("missing require field email"),
+});
+
 const updateSubscriptionSchema = Joi.object().keys({
   subscription: Joi.string().valid("starter", "pro", "business").required(),
 });
@@ -63,6 +69,7 @@ const userSchemas = {
   registerSchema,
   loginSchema,
   updateSubscriptionSchema,
+  verifyEmailSchema,
 };
 
 const User = model("user", userSchema);

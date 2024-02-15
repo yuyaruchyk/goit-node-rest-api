@@ -13,6 +13,7 @@ const getCurrentUser = require("./users/getCurrentUser");
 const logoutUser = require("./users/logoutUser");
 const updateAvatar = require("./users/updateAvatar");
 const verifyEmail = require("./users/verifyEmail");
+const resendVerifyEmail = require("./users/resendVerifyEmail");
 
 module.exports = {
   getAllContacts: ctrlWrapper(getAllContacts),
@@ -27,4 +28,5 @@ module.exports = {
   logoutUser: ctrlWrapper(logoutUser),
   updateAvatar,
   verifyEmail,
+  resendVerifyEmail,
 };
