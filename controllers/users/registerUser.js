@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
-const { nanoid } = require("nanoid");
+
 const { User } = require("../../models");
 const { sendEmail } = require("../../helpers");
-
+const { v4: uuidv4 } = require("uuid");
 const { BASE_URL } = process.env;
 
 const registerUser = async (req, res) => {
@@ -15,7 +15,8 @@ const registerUser = async (req, res) => {
 
   const hashPassword = await bcrypt.hash(password, 10);
   const avatarURL = gravatar.url(email);
-  const verificationToken = nanoid();
+
+  const verificationToken = uuidv4();
 
   const newUser = await User.create({
     ...req.body,
@@ -23,7 +24,6 @@ const registerUser = async (req, res) => {
     avatarURL,
     verificationToken,
   });
-
   const verifyEmail = {
     to: email,
     subject: "Verify email",
